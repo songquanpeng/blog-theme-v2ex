@@ -478,3 +478,9 @@ code {
 .panel img {
     width: 100%;
 }
+
+@media only screen and (max-width: 600px) {
+    .footer-links {
+        display: none;
+    }
+}

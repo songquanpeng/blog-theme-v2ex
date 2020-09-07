@@ -3,19 +3,7 @@
     <div class="wrapper">
         <div class="middle-col">
             <div class="main-content box" style="border-bottom: 0">
-                <div class="header"><a href="/">Home</a> <span class="chevron">&nbsp;›&nbsp;</span> <%= page.tag %></div>
-                <div class="header">
-                    <div class="title">
-                        <%= page.title %>
-                    </div>
-                    <div class="info">
-                        <a href=""><%= page.username %></a>
-                        &nbsp;•&nbsp;
-                        <%= page.post_time %>
-                        &nbsp;•&nbsp;
-                        <%= page.view %> views
-                    </div>
-                </div>
+                <%- include('./partials/page-info') %>
                 <div class="cell">
                     <pre><code id="code-display"><%=page.content%></code></pre>
                     <%- config.copyright %>
@@ -25,6 +13,7 @@
                     </label>
                 </div>
                 <div class="bottom">
+                    <a href="javascript:" onclick="copyCode()">Copy Code</a>
                     <a class="pagination-previous shadow-box" href="/page/<%= links.prev.link%>"><%= links.prev.title%></a>
                     <a class="pagination-next shadow-box" href="/page/<%= links.next.link%>"><%= links.next.title%></a>
                 </div>
@@ -36,4 +25,15 @@
         </div>
     </div>
 </div>
+
+<script>
+  function copyCode() {
+    const copyText = document.getElementById("code-display").textContent;
+    const textArea = document.getElementById('hiddenTextArea');
+    textArea.textContent = copyText;
+    document.body.append(textArea);
+    textArea.select();
+    document.execCommand("copy");
+  }
+</script>
 <%- include('./partials/footer') %>

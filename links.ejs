@@ -1,63 +1,59 @@
 <%- include('./partials/header') %>
-<div class="container article-container">
-    <article style="padding: 16px">
-        <%- include('./partials/page-info') %>
-    </article>
-    <% if (linkList && linkList.length){ %>
-        <% linkList.forEach((link)=>{ %>
-        <div class="link-card">
-            <%if(link && link.image ===""){
-                if(link.link.endsWith("/")) {
-                    link.image  = link.link + "favicon.ico";
-                }else {
-                    link.image  = link.link + "/favicon.ico";
-                }
-            }%>
-            <a href="<%= link.link %>"><img loading="lazy" class="image" src="<%= link.image %>"  alt="⚠️"/></a>
-            <div class="info">
-                <div class="title"><%= link.title %></div>
-                <div class="description"><%= link.description %></div>
+<div class="main">
+    <div class="wrapper">
+        <div class="middle-col">
+            <div class="main-content box" style="border-bottom: 0">
+                <div class="header"><a href="/">Home</a> <span class="chevron">&nbsp;›&nbsp;</span> <%= page.tag %></div>
+                <div class="header">
+                    <div class="title">
+                        <%= page.title %>
+                    </div>
+                    <div class="info">
+                        <a href="/member/<%= page.username %>"><%= page.username %></a>
+                        &nbsp;•&nbsp;
+                        <%= page.post_time %>
+                        &nbsp;•&nbsp;
+                        <%= page.view %> views
+                    </div>
+                </div>
+                <div class="cell">
+                    <div class="replies">
+                        <% if (linkList){ linkList.forEach((link)=>{ %>
+                            <div class="cell" style="padding: 0">
+                                <div class="reply-item">
+                                    <%if(link && link.image ===""){
+                                        if(link.link.endsWith("/")) {
+                                            link.image  = link.link + "favicon.ico";
+                                        }else {
+                                            link.image  = link.link + "/favicon.ico";
+                                        }
+                                    }%>
+                                    <img src="<%= link.image %>" class="avatar" alt="">
+                                    <div class="reply-item-content">
+                                        <div class="info" style="margin-top: 0">
+                                            <strong><a href="<%= link.link %>" class="username"><%= link.title %></a></strong>
+                                        </div>
+                                        <div class="reply-content">
+                                            <%- link.description %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% })} %>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <a class="pagination-previous shadow-box" href="/page/<%= links.prev.link%>"><%= links.prev.title%></a>
+                    <a class="pagination-next shadow-box" href="/page/<%= links.next.link%>"><%= links.next.title%></a>
+                </div>
             </div>
+            <%- include('./partials/comment')%>
         </div>
-    <% })} %>
-    <%- include('./partials/prev-next') %>
-    <%- include('./partials/comment') %>
+        <div class="right-bar">
+            <%- include('./partials/panel') %>
+        </div>
+    </div>
 </div>
 
-<style>
-    .link-card {
-        padding: 1em 0;
-        border: 2px solid transparent;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px dashed #999;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-
-    .link-card a {
-        flex-shrink: 0;
-    }
-
-    .link-card img {
-        width: 4em;
-        height: 4em;
-        margin: 0 1em 0 0;
-    }
-
-    .link-card .info {
-        flex-shrink: 1;
-    }
-
-    .link-card .title {
-        font-size: 1.1em;
-        font-weight: bold;
-        margin: 0.375em 0;
-    }
-
-    .link-card .description {
-        font-size: 0.875em;
-    }
-</style>
-
 <%- include('./partials/footer') %>
+

@@ -1,30 +1,46 @@
 <%- include('./partials/header') %>
-<div class="container">
-    <p class="title is-3"><%= title %></p>
-    <table class="table is-fullwidth is-hoverable is-bordered is-striped">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Post Time</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% pages.sort((a,b) => (a.post_time > b.post_time) ? 1 : ((b.post_time > a.post_time) ? -1 : 0)).forEach(page => { %>
-            <tr>
-                <td>
-                    <a href="/page/<%= page.link %>">
-                        <%= page.title %>
-                    </a>
-                </td>
-                <td>
-                    <time>
-                        <%= page.post_time.substring(0, 10) %>
-                    </time>
-                </td>
-            </tr>
-        <% }) %>
-        </tbody>
-    </table>
+<div class="main">
+    <div class="wrapper">
+        <div class="middle-col">
+            <div class="main-content box" style="border-bottom: 0">
+                <div class="header"><a href="/">Home</a> <span class="chevron">&nbsp;›&nbsp;</span> <%= title %></div>
+                <div class="cell">
+                    <table class="table is-fullwidth is-hoverable is-bordered is-striped">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Post Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% pages.sort((a,b) => (a.post_time > b.post_time) ? 1 : ((b.post_time > a.post_time) ? -1 : 0)).forEach(page => { %>
+                            <tr>
+                                <td>
+                                    <a href="/page/<%= page.link %>">
+                                        <%= page.title %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <time>
+                                        <%= page.post_time.substring(0, 10) %>
+                                    </time>
+                                </td>
+                            </tr>
+                        <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bottom">
+                    <a href="">Share</a>
+                    <a href="">Ignore</a>
+                    <a href="">Thank</a>
+                </div>
+            </div>
+        </div>
+        <div class="right-bar">
+            <%- include('./partials/panel') %>
+        </div>
+    </div>
 </div>
 
 <%- include('./partials/footer') %>

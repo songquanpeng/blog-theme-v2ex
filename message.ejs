@@ -1,7 +1,13 @@
 <%- include('./partials/header') %>
-<div class="container">
-    <div id="info-message" class="alert alert-success alert-dismissible fade show shadow-box">
-        <strong><%= title %>:</strong><p><%= message %></p>
+<div class="main">
+    <div class="wrapper">
+        <div class="main-content">
+            <% if(message.length) {%>
+                <div class="cell">
+                    <%= message %>
+                </div>
+            <% }%>
+        </div>
     </div>
 </div>
 <%- include('./partials/footer') %>

@@ -1,15 +1,35 @@
 <%- include('./partials/header') %>
-
-<div class="container article-container">
-    <article class="shadow-box" style="padding: 16px">
-        <%- include('./partials/page-info') %>
-        <%-page.converted_content%>
-        <p class="copyright"><strong>Links: <a href="<%-page.link%>"><%-page.link%></a></strong></p>
-        <%- config.copyright %>
-        <%- config.ad %>
-    </article>
-    <%- include('./partials/prev-next') %>
-    <%- include('./partials/comment') %>
+<div class="main">
+    <div class="wrapper">
+        <div class="middle-col">
+            <div class="main-content box" style="border-bottom: 0">
+                <div class="header"><a href="/">Home</a> <span class="chevron">&nbsp;›&nbsp;</span> <%= page.tag %></div>
+                <div class="header">
+                    <div class="title">
+                        <%= page.title %>
+                    </div>
+                    <div class="info">
+                        <a href="/member/<%= page.username %>"><%= page.username %></a>
+                        &nbsp;•&nbsp;
+                        <%= page.post_time %>
+                        &nbsp;•&nbsp;
+                        <%= page.view %> views
+                    </div>
+                </div>
+                <div class="cell">
+                    <%-page.converted_content%>
+                </div>
+                <div class="bottom">
+                    <a class="pagination-previous shadow-box" href="/page/<%= links.prev.link%>"><%= links.prev.title%></a>
+                    <a class="pagination-next shadow-box" href="/page/<%= links.next.link%>"><%= links.next.title%></a>
+                </div>
+            </div>
+            <%- include('./partials/comment')%>
+        </div>
+        <div class="right-bar">
+            <%- include('./partials/panel') %>
+        </div>
+    </div>
 </div>
 
 <%- include('./partials/footer') %>

@@ -4,7 +4,7 @@
             try {
               let dropdowns = JSON.parse(config.nav_links);
               dropdowns.forEach((dropdown)=>{ %>
-            <div class="links">
+            <div class="links" style="margin-top: 4px;">
                 <strong>
                   <% if (dropdown.value) dropdown.value.forEach((link)=>{ %>
                       <a href="<%- link.link %>" class="dark" target="_self" rel="noreferrer"><%- link.text %></a> &nbsp; <span class="snow">·</span> &nbsp;
@@ -16,7 +16,8 @@
         <div class="info">
             <% let date = new Date(); const year = date.getFullYear();%>
             © <%= year%> <a href="//<%= config.domain %>"><%=config.author%></a>.<%- config.extra_footer_text %>
-            Powered by <a href="https://github.com/songquanpeng/v2ex-style-forum">v2ex-style-forum</a>.
+            Powered by <a href="https://github.com/songquanpeng/blog">Node.js Blog</a> with theme <a href="https://github.com/songquanpeng/blog-theme-v2ex">v2ex</a>.
+
         </div>
         <div class="info">
             Memory occupied: <%= (process.memoryUsage().rss / (1024 *1024)).toFixed(2) %> MB

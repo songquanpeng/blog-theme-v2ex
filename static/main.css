@@ -94,7 +94,8 @@ a:hover {
 .right-bar {
     margin-left: 20px;
     margin-right: 4px;
-    flex: 0 0 270px;
+    flex: 0 0 350px;
+    max-width: 350px;
 }
 
 @media screen and (max-width: 600px) {
@@ -472,4 +473,8 @@ code {
 .raw-content {
     overflow-y: hidden;
     overflow-x: scroll;
+}
+
+.panel img {
+    width: 100%;
 }

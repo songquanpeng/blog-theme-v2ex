@@ -1,0 +1,17 @@
+<%- include('./partials/header') %>
+
+<div class="container article-container raw">
+    <article class="shadow-box" style="padding: 16px">
+        <%- include('./partials/page-info') %>
+        <div style="margin-top: 16px"></div>
+        <div class="raw-content">
+            <%-page.content%>
+            <%- config.copyright %>
+            <%- config.ad %>
+        </div>
+    </article>
+    <%- include('./partials/prev-next') %>
+    <%- include('./partials/comment') %>
+</div>
+
+<%- include('./partials/footer') %>

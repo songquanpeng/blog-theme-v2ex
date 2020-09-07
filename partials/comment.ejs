@@ -1,0 +1,83 @@
+<% if(config.allow_comments === 'true' && page.comment_status === 1){ %>
+    <% if(config.disqus !== undefined && config.disqus !== "") { %>
+        <div id="disqus_thread"></div>
+        <script>
+          var disqus_config = function() {
+            this.page.url = "https://<%- config.domain %>/page/<%- page.link %>";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = "<%- page.link %>"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+          };
+
+          (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://<%= config.disqus %>.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+          })();
+        </script>
+    <% } else { %>
+        <div class="container article-container" id="comment" style="margin-top: 16px;margin-bottom: 16px">
+            <h3>Comment</h3>
+            <div class="comment">
+                <br>
+                <form action="/api/comment" method="post">
+                    <div class="form-group">
+                        <label class="label">Title</label>
+                        <input type="text" class="form-control" placeholder="Comment title" id="title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Content</label>
+                        <textarea type="text" class="form-control" placeholder="Comment content" id="content" name="content" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <input class="form-control" type="text" id="author" name="author" placeholder="Your name"  required onblur="saveCommentInfo()">
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="email" id="email" name="email" placeholder="Your email" onblur="saveCommentInfo()">
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="url" id="url" name="url" placeholder="Your website" onblur="saveCommentInfo()">
+                        </div>
+                    </div>
+                    <div style="margin-top: 8px;height: 20px">
+                        <button type="submit" class="btn btn-primary" style="float: right">Submit</button>
+                        <button type="reset" class="btn btn-warning" style="float: right;margin-right: 8px">Reset</button>
+                    </div>
+                    <div style="display: none">
+                        <label for="page_id"></label>
+                        <input type="text" id="page_id" name="page_id" value="<%- page.id %>">
+                    </div>
+                    <script>
+                      document.addEventListener("DOMContentLoaded", function() {
+                        let author = localStorage.getItem("comment-author");
+                        if (!author) author = "";
+                        let email = localStorage.getItem("comment-email");
+                        if (!email) email = "";
+                        let url = localStorage.getItem("comment-url");
+                        if (!url) url = "";
+                        document.getElementById("author").setAttribute("value", author);
+                        document.getElementById("email").setAttribute("value", email);
+                        document.getElementById("url").setAttribute("value", url);
+                      });
+
+                      function saveCommentInfo() {
+                        localStorage.setItem("comment-author", document.getElementById("author").value);
+                        localStorage.setItem("comment-email", document.getElementById("email").value);
+                        localStorage.setItem("comment-url", document.getElementById("url").value);
+                      }
+                    </script>
+                </form>
+                <br>
+                <% comments.slice(0, 20).forEach(comment => { %>
+                    <div class="card shadow-box bg-transparent" style="margin-bottom: 16px">
+                        <div class="card-body">
+                            <p class="card-text"><%- comment.content ? comment.content : "No content" %></p>
+                            <span class="card-link"><%= comment.author ? comment.author : "Anonymous" %></span>
+                            <span class="card-link"><time datetime="2016-1-1"><%= comment.post_time %></time></span>
+                        </div>
+                    </div>
+                <% })%>
+        </div>
+        </div>
+    <% } %>
+<% } %>

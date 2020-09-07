@@ -1,0 +1,12 @@
+<h1 class="card-title font-weight-bold"><%-page.title%></h1>
+<div class="info" style="font-size: smaller">
+    <span>Tag:
+        <% page.tag.trim().split(" ").forEach(function (tag) {if (tag !== "") {%>
+            <span class="badge badge-light badge-hover"><a class="tag is-light" href='/tag/<%= tag %>' style="color: black"><%= tag %></a></span>
+        <% }}); %>
+    </span>
+    <span>Posted on <span class="badge badge-light badge-hover"><%-page.post_time%></span></span>
+    <span>Edited on <span class="badge badge-light badge-hover"><%-page.edit_time%></span></span>
+    <span>Views: <span class="badge badge-light badge-hover"><%-page.view%></span></span>
+
+</div>

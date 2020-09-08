@@ -283,7 +283,7 @@ a.username:hover {
     text-decoration: none;
     font-weight: 700;
     box-shadow: 0 1px 0 rgba(66,66,77,.1);
-    background-image: url('/theme/bg_blended_light.png');
+    background-image: url('/static/bg_blended_light.png');
     padding: 4px 8px;
     border: 1px solid rgba(80,80,90,.2);
     border-bottom-color: rgba(80,80,90,.35);

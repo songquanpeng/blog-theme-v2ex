@@ -1,4 +1,4 @@
-# Theme Bootstrap
+# Theme V2ex
 ## Description
 1. Main reference: https://www.v2ex.com/.
 2. Theme for blog system:  https://github.com/songquanpeng/blog

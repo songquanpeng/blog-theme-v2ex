@@ -162,8 +162,6 @@ a.focus, a.focus:hover {
     text-align: left;
     border-bottom: 1px solid #e2e2e2;
     display: flex;
-    justify-content: stretch;
-    align-items: center;
 }
 
 img.avatar {
@@ -328,6 +326,7 @@ form input {
     line-height: 150%;
     text-align: left;
     border-bottom: 1px solid #e2e2e2;
+    overflow-wrap: break-word;
 }
 
 .full-input {
@@ -467,7 +466,7 @@ a.right {
 }
 
 code {
-    font-family: Consolas, 'Courier New', monospace;
+    font-family: Consolas, monospace;
 }
 
 .raw-content {

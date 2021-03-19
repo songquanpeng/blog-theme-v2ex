@@ -17,7 +17,7 @@
     <% } else { %>
         <div class="replies">
             <div class="cell">
-                <span class="gray"><%= comments ? comments.length : 0 %> replies &nbsp;<strong class="snow">•</strong> &nbsp;<%= page.post_time %></span>
+                <span class="gray"><%= comments ? comments.length : 0 %> replies &nbsp;<strong class="snow">•</strong> &nbsp;<%= page.createdAt %></span>
             </div>
             <% if (comments){ comments.forEach((comment)=>{ %>
                 <div class="cell" style="padding: 0">
@@ -27,7 +27,7 @@
                             <div class="info" style="margin-top: 0">
                                 <strong><a href="<%= comment.url %>" class="username"><%= comment.author ? comment.author : "Anonymous" %></a></strong>
                                 &nbsp;•&nbsp;
-                                <%= comment.post_time %>
+                                <%= comment.createdAt %>
                             </div>
                             <div class="reply-content">
                                 <%- comment.content ? comment.content : "No content" %>
@@ -40,7 +40,7 @@
         <div class="comment-editor">
             <form method="post" action="/api/comment/" style="margin: 0">
                 <div class="cell">
-                    Add a New Comment
+                    Add a New File
                 </div>
                 <div class="cell">
                     <input class="input" type="text" id="author" name="author" placeholder="Your name"  required onblur="saveCommentInfo()">

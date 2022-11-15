@@ -1,6 +1,6 @@
 <div class="header">
 <a href="/">Home</a>
-    <% page.tag.trim().split(" ").forEach(function (tag) { if(tag !== ""){ %>
+    <% page.tag.trim().split(";").forEach(function (tag) { if(tag !== ""){ %>
         &nbsp;›&nbsp; <a class="chevron" href="/tag/<%= tag %>"><%= tag %></a>
     <% }}); %>
 </div>

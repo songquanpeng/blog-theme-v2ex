@@ -27,7 +27,7 @@
                             <div class="item-content">
                                 <a href="/page/<%= page.link %>" class="title"><%= page.title ? page.title : 'No title' %></a>
                                 <div class="info">
-                                    <% page.tag.trim().split(" ").forEach(function (tag) { if(tag !== ""){ %>
+                                    <% page.tag.trim().split(";").forEach(function (tag) { if(tag !== ""){ %>
                                         <a class="node" href="/tag/<%= tag %>"><%= tag %></a>
                                     <% }}); %>
                                     &nbsp;•&nbsp;

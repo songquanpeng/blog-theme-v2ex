@@ -83,6 +83,8 @@ a:hover {
     display: inline-block;
     width: 100%;
     height: 100%;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
 .main-content {
@@ -211,6 +213,8 @@ div.info {
     display: inline-block;
     text-align: center;
     padding-top: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 a.node {
@@ -487,4 +491,9 @@ code {
 
 .middle-col img {
     max-width: 100%;
+}
+
+.main-content pre {
+    /*TODO: fix hard coding here */
+    max-width: 666px;
 }

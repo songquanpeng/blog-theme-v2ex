@@ -4,7 +4,7 @@
         <div class="middle-col">
             <div class="main-content box" style="border-bottom: 0">
                 <%- include('./partials/page-info') %>
-                <div class="cell">
+                <div class="cell" id="article">
                     <%-page.converted_content%>
                 </div>
                 <div class="bottom">
@@ -15,9 +15,32 @@
             <%- include('./partials/comment')%>
         </div>
         <div class="right-bar">
-            <%- include('./partials/panel') %>
+            <% if(page.categoryList.length > 1) { %>
+                <div class="panel" style='margin-bottom: 16px'>
+                    <div class="cell"><%- page.category %></div>
+                    <div class="cell">
+                        <ul>
+                            <% page.categoryList.forEach((p)=>{ %>
+                                <li><a href="/page/<%= p.link %>"><%= p.title %></a></li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                </div>
+            <% } %>
+            <div class="panel" id='toc-container'>
+                <div class="cell">目录</div>
+                <div class="cell">
+                    <ul id="toc">
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<script>
+  (function() {
+    generateTOC();
+  })();
+</script>
 
 <%- include('./partials/footer') %>
